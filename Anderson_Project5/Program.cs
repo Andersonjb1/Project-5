@@ -4,54 +4,46 @@
     {
         static void Main(string[] args)
         {
-            static void Main(string[] args)
+            BinaryTree<QuizText> tree = GetTree();
+            BinaryTreeNode<QuizText> node = tree.Root;
+            while (node != null)
             {
-                BinaryTree<QuizText> tree = GetTree();
-                BinaryTreeNode<QuizText> node = tree.Root;
-                while (node != null)
+                if (node.Left != null || node.Right != null)
                 {
-                    if (node.Left != null || node.Right != null)
+                    Console.Write(node.Data.Text);
+                    switch (Console.ReadKey(true).Key)
                     {
-                        Console.Write(node.Data.Text);
-                        switch (Console.ReadKey(true).Key)
-                        {
-                            case ConsoleKey.Y:
-                                WriteAnswer(" Yes");
-                                node = node.Left;
-                                break;
-                            case ConsoleKey.N:
-                                WriteAnswer(" No");
-                                node = node.Right;
-                                break;
-                        }
+                        case ConsoleKey.Y:
+                            WriteAnswer(" Yes");
+                            node = node.Left;
+                            break;
+                        case ConsoleKey.N:
+                            WriteAnswer(" No");
+                            node = node.Right;
+                            break;
                     }
-                    else
-                    {
-                        WriteAnswer(node.Data.Text);
-                        node = null;
-                    }
+                }
+                else
+                {
+                    WriteAnswer(node.Data.Text);
+                    node = null;
                 }
             }
         }
 
-        public class QuizText
-        {
-            public string Text { get; set; }
-            public QuizText(string text) => Text = text;
-        }
 
         private static BinaryTree<QuizText> GetTree()
         {
             BinaryTree<QuizText> tree = new BinaryTree<QuizText>();
             tree.Root = new BinaryTreeNode<QuizText>()
             {
-                Data = new QuizText("Do you have experience in developing applications ? "),
+                Data = new QuizText("Do you have experience?"),
 
                 Children = new List<TreeNode<QuizText>>()
                 {
             new BinaryTreeNode<QuizText>()
             {
-                Data = new QuizText("Have you worked as a developer for more than 5 years ? "),
+                Data = new QuizText("Have you worked as a developer for more than 5 years?"),
                 Children = new List<TreeNode<QuizText>>()
                 {
                     new BinaryTreeNode<QuizText>()
