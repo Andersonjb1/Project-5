@@ -4,8 +4,11 @@
     {
         static void Main(string[] args)
         {
-            BinaryTree<QuizText> tree = GetTree();
-            BinaryTreeNode<QuizText> node = tree.Root;
+            BTree<QuizText> tree = GetTree();
+            BTreeNode<QuizText> node = tree.Root;
+
+            Console.WriteLine("Enter Y for yes, N for no.");
+
             while (node != null)
             {
                 if (node.Left != null || node.Right != null)
@@ -32,49 +35,49 @@
         }
 
 
-        private static BinaryTree<QuizText> GetTree()
+        private static BTree<QuizText> GetTree()
         {
-            BinaryTree<QuizText> tree = new BinaryTree<QuizText>();
-            tree.Root = new BinaryTreeNode<QuizText>()
+            BTree<QuizText> tree = new BTree<QuizText>();
+            tree.Root = new BTreeNode<QuizText>()
             {
                 Data = new QuizText("Do you have experience in the computing field?"),
 
-                Children = new List<BinaryTreeNode<QuizText>>()
+                Children = new List<BTreeNode<QuizText>>()
                 {
-                    new BinaryTreeNode<QuizText>()
+                    new BTreeNode<QuizText>()
                     {
                         Data = new QuizText("Have you worked as a developer for more than 5 years?"),
-                        Children = new List<BinaryTreeNode<QuizText>>()
+                        Children = new List<BTreeNode<QuizText>>()
                         {
-                            new BinaryTreeNode<QuizText>()
+                            new BTreeNode<QuizText>()
                             {
                                 Data = new QuizText("Apply as a senior developer!")
                             },
-                            new BinaryTreeNode<QuizText>()
+                            new BTreeNode<QuizText>()
                             {
                                 Data = new QuizText("Apply as a middle developer!")
                             }
                         }
                     },
-                    new BinaryTreeNode<QuizText>()
+                    new BTreeNode<QuizText>()
                     {
                         Data = new QuizText("Have you completed the university?"),
-                        Children = new List<BinaryTreeNode<QuizText>>()
+                        Children = new List<BTreeNode<QuizText>>()
                         {
-                            new BinaryTreeNode<QuizText>()
+                            new BTreeNode<QuizText>()
                             {
                                 Data = new QuizText("Apply for a junior developer!")
                             },
-                            new BinaryTreeNode<QuizText>()
+                            new BTreeNode<QuizText>()
                             {
                                 Data = new QuizText("Will you find some time during the semester?"),
-                                Children = new List<BinaryTreeNode<QuizText>>()
+                                Children = new List<BTreeNode<QuizText>>()
                                 {
-                                    new BinaryTreeNode<QuizText>()
+                                    new BTreeNode<QuizText>()
                                     {
                                         Data = new QuizText("Apply for our long-time internship program!")
                                     },
-                                    new BinaryTreeNode<QuizText>()
+                                    new BTreeNode<QuizText>()
                                     {
                                         Data = new QuizText("Apply for summer internship program!")
                                     }
@@ -84,7 +87,7 @@
                     }
                 }
             };
-            tree.Count = 9;
+            tree.Count = tree.Root.GetHeight();
             return tree;
         }
 
