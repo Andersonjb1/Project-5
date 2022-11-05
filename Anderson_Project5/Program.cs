@@ -13,7 +13,7 @@
             {
                 if (node.Left != null || node.Right != null)
                 {
-                    Console.Write(node.Data.Text);
+                    WriteQuestion(node.Data.Text);
                     switch (Console.ReadKey(true).Key)
                     {
                         case ConsoleKey.Y:
@@ -61,7 +61,7 @@
                     },
                     new BTreeNode<QuizText>()
                     {
-                        Data = new QuizText("Have you completed the university?"),
+                        Data = new QuizText("Have you finished college?"),
                         Children = new List<BTreeNode<QuizText>>()
                         {
                             new BTreeNode<QuizText>()
@@ -70,7 +70,7 @@
                             },
                             new BTreeNode<QuizText>()
                             {
-                                Data = new QuizText("Will you find some time during the semester?"),
+                                Data = new QuizText("Do you have extra time during the semester?"),
                                 Children = new List<BTreeNode<QuizText>>()
                                 {
                                     new BTreeNode<QuizText>()
@@ -94,6 +94,12 @@
         static void WriteAnswer(string text)
         {
             Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(text);
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+        static void WriteQuestion(string text)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(text);
             Console.ForegroundColor = ConsoleColor.Gray;
         }
