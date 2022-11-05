@@ -93,7 +93,7 @@
 
         static void WriteAnswer(string text)
         {
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(text);
             Console.ForegroundColor = ConsoleColor.Gray;
         }
